@@ -25,6 +25,11 @@ function kiemTraForm() {
      * isset kiểm tra biến truyền vào có tồn tại & khác NULL hay không
      */
 
+    // var_dump( $_GET['so_thu_nhat'] );
+    // echo "<hr>";
+    // var_dump( $GLOBALS['_GET']['so_thu_nhat'] );
+    // die;
+
     if (
         isset($_GET['so_thu_nhat']) == false ||
         isset($_GET['so_thu_hai']) == false ||
