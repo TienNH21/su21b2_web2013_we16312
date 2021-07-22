@@ -22,7 +22,8 @@ function chiaDu($a, $b) {
 
 function kiemTraForm() {
     /*
-     * isset kiểm tra biến truyền vào có tồn tại & khác NULL hay không
+     * isset: kiểm tra biến truyền vào có tồn tại & khác NULL hay không
+     * empty: kiểm tra biến có rỗng hay không?
      */
 
     // var_dump( $_GET['so_thu_nhat'] );
