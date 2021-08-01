@@ -1,45 +1,12 @@
 <?php
 
-$dbHost = "localhost";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "we16312";
-
 /*
- * B1: Tạo kết nối tới CSDL
- * $connection - kết quả trả về khi new mysqli()
- * $connection là kết nối tới CSDL
- * Các câu truy vấn sẽ thực hiện thông qua $connection
+ * .    xét thư mục hiện tại
+ * ..   lùi lại 1 thư mục
  */
-$connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+require_once './../../db/san_pham.php';
 
-// B2: viết câu truy vấn
-$sql = "SELECT * FROM san_pham";
-
-// B3: thực thi truy vấn
-$kqTruyVan = $connection->query($sql);
-
-// B4: Bóc dữ liệu từ $kqTruyVan
-$data = [];
-
-// fetch_row(): lấy ra từng dòng dữ liệu
-while ( true ) {
-    $rowData = $kqTruyVan->fetch_row();
-    if ($rowData  === null) {
-        break;
-    }
-
-    $row = [
-        'id' => $rowData[0],
-        'ma' => $rowData[1],
-        'ten' => $rowData[2],
-        'so_luong' => $rowData[3],
-        'gia' => $rowData[4],
-        'don_vi' => $rowData[5],
-    ];
-
-    array_push($data, $row);
-}
+$data = getAll();
 
 ?>
 
@@ -62,6 +29,7 @@ while ( true ) {
                 <td>Số lượng</td>
                 <td>Đơn giá</td>
                 <td>Đơn vị</td>
+                <td colspan="2">Thao tác</td>
             </tr>
         </thead>
         <tbody>
@@ -84,6 +52,15 @@ while ( true ) {
                     </td>
                     <td>
                         <?php echo $data[$i]['don_vi'] ?>
+                    </td>
+                    <td>
+                        <!-- query string -->
+                        <a href="/we16312/admin/san_pham/edit.php?id=<?php echo $data[$i]['id'] ?>">
+                            Cập nhật
+                        </a>
+                    </td>
+                    <td>
+                        <a href="">Xóa</a>
                     </td>
                 </tr>
             <?php } ?>
