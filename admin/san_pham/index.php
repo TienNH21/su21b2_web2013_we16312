@@ -60,7 +60,7 @@ $data = getAll();
                         </a>
                     </td>
                     <td>
-                        <a href="">Xóa</a>
+                        <a href="/we16312/admin/san_pham/delete.php?id=<?php echo $data[$i]['id'] ?>">Xóa</a>
                     </td>
                 </tr>
             <?php } ?>

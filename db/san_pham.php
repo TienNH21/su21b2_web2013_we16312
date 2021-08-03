@@ -56,7 +56,7 @@ function findById($id) {
 
     $sql = "SELECT * FROM san_pham WHERE id = :id";
 
-    $statement = $conn-prepare($sql);
+    $statement = $conn->prepare($sql);
     $statement->execute([ 'id' => $id ]);
 
     $rowData = $statement->fetch();
@@ -74,11 +74,21 @@ function findById($id) {
 }
 
 function update($data) {
+    $conn = getConnection();
     $sql = "UPDATE san_pham SET ten = :ten, ma = :ma, " .
         " so_luong = :so_luong, don_gia = :don_gia, don_vi = :don_vi" .
         " WHERE id = :id";
+
+    $statement = $conn->prepare($sql);
+    $statement->execute($data);
+
+    return true;
 }
 
 function deleteById($id) {
+    $conn = getConnection();
     $sql = "DELETE FROM san_pham WHERE id = :id";
+    $statement = $conn->prepare($sql);
+
+    $statement->execute([ 'id' => $id ]);
 }
