@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,12 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        if ( isset($_SESSION['error']) ) {
+            echo "<p style='color:red'>" . $_SESSION['error'] . "</p>";
+            unset($_SESSION['error']);
+        }
+    ?>
     <form method="POST"
         action="/we16312/admin/san_pham/store.php">
         <div>

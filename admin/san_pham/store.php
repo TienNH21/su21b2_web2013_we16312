@@ -2,7 +2,11 @@
 
 require_once './../../db/san_pham.php';
 
+// Bắt đầu 1 session
 session_start();
+
+// $_GET, $_POST, $_SESSION, $_REQUEST
+
 if (
     empty($_POST['ma']) ||
     empty($_POST['ten']) ||
@@ -11,8 +15,22 @@ if (
     empty($_POST['don_vi'])
 ) {
     // hiển thị ra thông báo lỗi
+    $_SESSION['error'] = "Không được để trống";
 
     // quay về trang thêm mới
+    header("Location: /we16312/admin/san_pham/create.php");
+
+    die;
+}
+
+if ( is_int( $_POST['so_luong'] ) == false ) {
+    // hiển thị ra thông báo lỗi
+    $_SESSION['error'] = "Số lượng phải là số";
+
+    // quay về trang thêm mới
+    header("Location: /we16312/admin/san_pham/create.php");
+
+    die;
 }
 
 $data = [

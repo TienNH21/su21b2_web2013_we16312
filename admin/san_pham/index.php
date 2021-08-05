@@ -6,6 +6,12 @@
  */
 require_once './../../db/san_pham.php';
 
+if ( isset( $_SESSION['user'] ) == false ) {
+    //header
+
+    die;
+}
+
 $data = getAll();
 
 ?>
