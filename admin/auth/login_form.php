@@ -1,4 +1,15 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+if (
+    isset($_SESSION['user']) == true &&
+    empty($_SESSION['user']) == false
+) {
+    // người dùng đã đăng nhập -> đẩy về trang quản trị
+    header("Location: /we16312/admin/san_pham/index.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

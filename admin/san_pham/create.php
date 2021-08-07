@@ -14,8 +14,15 @@
             unset($_SESSION['error']);
         }
     ?>
-    <form method="POST"
-        action="/we16312/admin/san_pham/store.php">
+    <!--
+        - Để upload file lên server bắt buộc phải dùng method POST trên form
+        - Khi form có input[type='file'] -> enctype="multipart/form-data"
+    -->
+    <form
+        method="POST"
+        action="/we16312/admin/san_pham/store.php"
+        enctype="multipart/form-data"
+    >
         <div>
             <label>Mã SP</label>
             <input type="text" name="ma" />
@@ -35,6 +42,10 @@
         <div>
             <label>Đơn vị</label>
             <input type="text" name="don_vi" />
+        </div>
+        <div>
+            <label>Ảnh</label>
+            <input type="file" name="img" />
         </div>
         <div>
             <button>Thêm mới</button>

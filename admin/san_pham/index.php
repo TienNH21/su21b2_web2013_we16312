@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /*
  * .    xét thư mục hiện tại
  * ..   lùi lại 1 thư mục
@@ -7,7 +9,8 @@
 require_once './../../db/san_pham.php';
 
 if ( isset( $_SESSION['user'] ) == false ) {
-    //header
+    // Nếu chưa đăng nhập -> đẩy về trang đăng nhập
+    header("Location: /we16312/admin/auth/login_form.php");
 
     die;
 }
@@ -26,6 +29,7 @@ $data = getAll();
     <link rel="stylesheet" href="/we16312/bootstrap.min.css" />
 </head>
 <body>
+    <a href="/we16312/admin/san_pham/create.php">Thêm mới</a>
     <table class="table table-stripped">
         <thead>
             <tr>
